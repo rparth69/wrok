@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 20px;
+  background-color: white;
+
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=email]{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f5f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: red;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 2;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<form action="frompage"name="myForm">
+  <div class="container">
+    <h1><center>Register</center></h1>
+    <p>Please Fill in This Form To Create An Account.</p>
+    <hr>
+
+    <label for="fname"><b>First Name</b></label>
+    <input type="text" placeholder="First Name" name="fname" required>
+
+
+    <label for="mname"><b>Middle Name</b></label>
+    <input type="text" placeholder="Middle Name" name="mname" required>
+
+    <label for="lname"><b>last Name</b></label>
+    <input type="text" placeholder="last Name" name="lanme" required>
+
+    <label for="email"><b>Email</b></label>
+     <input id="email" type="email" size="64" maxLength="64" required placeholder="username@botree.com" pattern=".+@.com" title="Please provide corporate e-mail address"><br>
+    
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <label for="gender"><b>Gender</b></label>
+    <input type="radio" name="gender" value="male"> Male
+    <input type="radio" name="gender" value="female">female<br><br>
+
+   <label for="hobby"><b>Hobbies</b></label>
+    <input type="checkbox" name="hobby" value="reading"> reading
+    <input type="checkbox" name="hobby" value="Writing">Writing
+
+    <input type="checkbox" name="hobby" value="Painting"> Painting
+    <input type="checkbox" name="hobby" value="reading"> reading<br><br>  
+    
+
+    <button type="submit" class="registerbtn">Submit</button>
+  </div>
+  
+  
+</form>
+
+</body>
+</html>
+
+
+
+<script>
+function validateForm() {
+  var x = document.forms["myForm"]["fname"].value;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+}
+</script>
