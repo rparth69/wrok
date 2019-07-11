@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: white;
 }
 
-* {
+{
   box-sizing: border-box;
 }
 
-/* Add padding to containers */
+
 .container {
-  padding: 20px;
+  padding: 100px;
   background-color: white;
+  width: device-width
+  border:10;
+  border color:black;
 
 }
 
-/* Full-width input fields */
+
 input[type=text], input[type=password], input[type=email]{
   width: 100%;
   padding: 15px;
@@ -27,6 +31,8 @@ input[type=text], input[type=password], input[type=email]{
   display: inline-block;
   border: none;
   background: #f1f5f1;
+  
+
 }
 
 input[type=text]:focus, input[type=password]:focus {
@@ -34,7 +40,7 @@ input[type=text]:focus, input[type=password]:focus {
   outline: none;
 }
 
-/* Overwrite default styles of hr */
+
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
@@ -48,7 +54,7 @@ hr {
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 10%;
   opacity: 0.9;
 }
 
@@ -70,58 +76,82 @@ a {
 </head>
 <body>
 
-<form action="frompage"name="myForm">
+<form action="#" name="myForm" method="post">
   <div class="container">
     <h1><center>Register</center></h1>
     <p>Please Fill in This Form To Create An Account.</p>
     <hr>
 
     <label for="fname"><b>First Name</b></label>
-    <input type="text" placeholder="First Name" name="fname" required>
+    <input type="text" placeholder="First Name" onfocusout= validateForm() name="fname" id="fname"><div class="fname" color="red"></div><br>
 
 
     <label for="mname"><b>Middle Name</b></label>
-    <input type="text" placeholder="Middle Name" name="mname" required>
+    <input type="text" placeholder="Middle Name" onfocusout=validateForm() name="mname" id="mname"><div class="mname" color="red"></div><br>
 
     <label for="lname"><b>last Name</b></label>
-    <input type="text" placeholder="last Name" name="lanme" required>
+    <input type="text" placeholder="last Name"  onfocusout=validateForm() name="lname" id="lname"><div class="lname" color="red"></div><br>
 
     <label for="email"><b>Email</b></label>
-     <input id="email" type="email" size="64" maxLength="64" required placeholder="username@botree.com" pattern=".+@.com" title="Please provide corporate e-mail address"><br>
+     <input name="email" type="email" size="64" onfocusout=validateForm() maxLength="64" placeholder="username@botree.com" name="email"><div class="email" color="red"></div>
+      <br>
     
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" onfocusout= validateForm() name="password" ><div class="password" color="red"></div>
+     <br>
+
+
 
     <label for="gender"><b>Gender</b></label>
     <input type="radio" name="gender" value="male"> Male
     <input type="radio" name="gender" value="female">female<br><br>
 
    <label for="hobby"><b>Hobbies</b></label>
-    <input type="checkbox" name="hobby" value="reading"> reading
+    <input type="checkbox" name="hobby" value="reading">reading
     <input type="checkbox" name="hobby" value="Writing">Writing
-
-    <input type="checkbox" name="hobby" value="Painting"> Painting
-    <input type="checkbox" name="hobby" value="reading"> reading<br><br>  
+    <input type="checkbox" name="hobby" value="Painting">Painting
+    <input type="checkbox" name="hobby" value="reading">reading<br><br>  
     
 
-    <button type="submit" class="registerbtn">Submit</button>
+
+
+    <center></center><button type="submit" class="registerbtn" onclick="showInput();">Submit</center></button>
   </div>
   
   
 </form>
-
 </body>
 </html>
+<script language="JavaScript">
 
-
-
-<script>
-function validateForm() {
-  var x = document.forms["myForm"]["fname"].value;
-  if (x == "") {
-    alert("Name must be filled out");
-    return false;
-  }
+ function validateForm() 
+{
+  var fname= document.forms["myForm"]["fname"].value;
+  var mname= document.forms["myForm"]["mname"].value;
+  var lname= document.forms["myForm"]["lname"].value;
+  var email= document.forms["myForm"]["email"].value;
+  var password= document.forms["myForm"]["password"].value;
+  
 }
-</script>
+
+$("input[type=text]").on('focusout', function(){
+  if(this.value == ""){
+    $("."+this.name).text("Please Enter " + this.name)
+  }
+});
+
+
+$("input[type=email]").on('focusout', function(){
+  if(this.value == ""){
+    $("."+this.name).text("Please Enter email address")
+  }
+});
+
+
+$("input[type=password]").on('focusout', function(){
+  if(this.value == ""){
+    $("."+this.name).text("Please Enter password ")
+  }
+});
+    </script>
