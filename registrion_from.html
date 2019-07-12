@@ -26,14 +26,13 @@ body {
 
 input[type=text], input[type=password], input[type=email]{
   width: 100%;
-  padding: 15px;
+  padding: 25px;
   margin: 5px 0 22px 0;
   display: inline-block;
   border: none;
   background: #f1f5f1;
-  
-
-}
+  font-size: 100%
+  }
 
 input[type=text]:focus, input[type=password]:focus {
   background-color: #ddd;
@@ -42,11 +41,16 @@ input[type=text]:focus, input[type=password]:focus {
 
 
 hr {
-  border: 1px solid #f1f1f1;
+  border: 5px solid #f1f1f1;
   margin-bottom: 25px;
 }
 
-/* Set a style for the submit button */
+ul {
+  border: 10px solid #f1f1f1;
+  margin-bottom: 205px;
+  font-size: 200%;
+}
+
 .registerbtn {
   background-color: red;
   color: white;
@@ -62,24 +66,19 @@ hr {
   opacity: 2;
 }
 
-/* Add a blue text color to links */
-a {
-  color: dodgerblue;
+label {
+    cursor: default;
+    font-size: 140%;
 }
 
-/* Set a grey background color and center the text of the "sign in" section */
-.signin {
-  background-color: #f1f1f1;
-  text-align: center;
-}
 </style>
 </head>
 <body>
 
-<form action="#" name="myForm" method="post">
+<form action="" name="myForm" id="myForm" method="post">
   <div class="container">
-    <h1><center>Register</center></h1>
-    <p>Please Fill in This Form To Create An Account.</p>
+    <h1><center><u>Registration</u></center></h1>
+    <p><h2>Please Fill in This Form To Create An Account.</h2></p>
     <hr>
 
     <label for="fname"><b>First Name</b></label>
@@ -107,23 +106,22 @@ a {
     <input type="radio" name="gender" value="male"> Male
     <input type="radio" name="gender" value="female">female<br><br>
 
-   <label for="hobby"><b>Hobbies</b></label>
-    <input type="checkbox" name="hobby" value="reading">reading
+    <label for="hobby"><b>Hobbies</b></label>
+    <input type="checkbox" name="hobby" value="reading" font-size: 100% >reading
     <input type="checkbox" name="hobby" value="Writing">Writing
     <input type="checkbox" name="hobby" value="Painting">Painting
     <input type="checkbox" name="hobby" value="reading">reading<br><br>  
     
-
-
-
-    <center></center><button type="submit" class="registerbtn" onclick="showInput();">Submit</center></button>
+  <center></center><button type="submit" class="registerbtn" onclick="validateForm();">Submit</center></button>
   </div>
+
+    <p id="result"></p>
   
   
 </form>
 </body>
 </html>
-<script language="JavaScript">
+<script LANGUAGE="JavaScript" type="text/javascript">
 
  function validateForm() 
 {
@@ -132,6 +130,7 @@ a {
   var lname= document.forms["myForm"]["lname"].value;
   var email= document.forms["myForm"]["email"].value;
   var password= document.forms["myForm"]["password"].value;
+  var gender=document.forms["myForm"]["gender"].value;
   
 }
 
@@ -144,7 +143,7 @@ $("input[type=text]").on('focusout', function(){
 
 $("input[type=email]").on('focusout', function(){
   if(this.value == ""){
-    $("."+this.name).text("Please Enter email address")
+    $("."+this.name).text("Please Enter email address valid Format")
   }
 });
 
@@ -154,4 +153,23 @@ $("input[type=password]").on('focusout', function(){
     $("."+this.name).text("Please Enter password ")
   }
 });
-    </script>
+
+$(function() {
+
+    $("#myForm").submit(function(e) {
+        e.preventDefault();
+       
+        var display =
+
+        "<ul><li><b>First Name: </b>" + document.myForm.fname.value +
+        "<li><b>Middle Name: </b>" + document.myForm.mname.value  +
+        "<li><b>Last Name: </b>" + document.myForm.lname.value +
+        "<li><b>Email: </b>" + document.myForm.email.value +
+        "<li><b>Password: </b>" + document.myForm.password.value + 
+        "<li><b>Gender: </b>" + document.myForm.gender.value +
+        "<li><b>Hobbies: </b>" + document.myForm.hobby.value;
+
+        $("#result").html(display);
+  });
+});
+</script>
